@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EDBBBB"
+    tools:context=".chatWindow">
+
+    <RelativeLayout
+        android:id="@+id/Tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="#9C1744">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/back_btn" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_pic_view"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/btn_back"
+            android:src="@drawable/photocamera"
+            app:civ_border_color="#ECE9E9"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/other_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/profile_pic_view"
+            android:fontFamily="@font/poppins_regular"
+            android:text="UserName"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/Tool_bar"
+        android:layout_above="@id/bottom_layout"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:id="@+id/cardView"
+            android:layout_weight="1"
+            android:background="@color/white"
+            app:cardCornerRadius="31dp">
+
+            <EditText
+                android:id="@+id/chat_message_input"
+                android:layout_width="339dp"
+                android:layout_height="61dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Type the Messages"
+                android:padding="10dp" />
+
+            <ImageView
+                android:id="@+id/camera_chat"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/camera_chat" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/message_send_btn"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/cardView"
+            android:src="@drawable/sendbut" />
+
+    </RelativeLayout>
+</RelativeLayout>

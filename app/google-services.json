@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "96123425458",
+    "project_id": "pmessanger-86e82",
+    "storage_bucket": "pmessanger-86e82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96123425458:android:20aa7087732f060aac6fab",
+        "android_client_info": {
+          "package_name": "com.example.pmessanger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJcUEimj1Mu0ZacMHAj0ECQoP_E1vJI6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

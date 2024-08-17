@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/receiver_layout">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:padding="8dp"
+        android:layout_marginEnd="80dp">
+
+        <TextView
+            android:id="@+id/receiverTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sender_shape"
+            android:backgroundTint="#6DDDEC"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:text="I am fine "
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:layout_marginStart="80dp">
+
+        <TextView
+            android:id="@+id/senderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/sender_shape"
+            android:backgroundTint="#E1AFEA"
+            android:gravity="right"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Hello How are "
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/receiverImageView"-->
+<!--        android:layout_width="@dimen/_180sdp"-->
+<!--        android:layout_height="@dimen/_250sdp"-->
+<!--        android:src="@drawable/messenger" />-->
+
+</RelativeLayout>
