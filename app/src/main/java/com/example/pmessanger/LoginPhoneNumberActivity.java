@@ -2,6 +2,7 @@ package com.example.pmessanger;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.hbb20.CountryCodePicker;
 
 
-public class LoginPhoneNumber extends AppCompatActivity {
+public class LoginPhoneNumberActivity extends AppCompatActivity {
 Button send_otp_btn;
 EditText login_mobile_number;
 FirebaseAuth auth;
@@ -45,8 +46,11 @@ CountryCodePicker countryCodePicker;
                     login_mobile_number.setError("Phone number is not Valid");
                     return;
                 }
-                Intent intent = new Intent(LoginPhoneNumber.this, LoginOTP.class);
-                intent.putExtra("phone", countryCodePicker.getFullNumberWithPlus());
+                String phoneNumber = countryCodePicker.getFullNumberWithPlus();
+                Intent intent = new Intent(LoginPhoneNumberActivity.this, LoginOTPActivity.class);
+                intent.putExtra("phone", phoneNumber);
+
+                Log.d("LoginPhoneNumberActivity", "mobile number is: " + phoneNumber);
                 startActivity(intent);
             }
         });

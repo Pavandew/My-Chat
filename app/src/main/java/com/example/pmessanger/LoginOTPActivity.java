@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,12 +22,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-public class LoginOTP extends AppCompatActivity {
+public class LoginOTPActivity extends AppCompatActivity {
 
     String phoneNumber;
     Long timeoutSeconds = 60L;
@@ -50,6 +54,8 @@ public class LoginOTP extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBarLogin);
 
         phoneNumber = getIntent().getExtras().getString("phone");
+        Toast.makeText(getApplicationContext(), phoneNumber, Toast.LENGTH_SHORT).show();
+        Log.d("OTP_Verify", "Verification code: " + verificationCode);
 
         sendOtp(phoneNumber,false);
 
@@ -62,8 +68,8 @@ public class LoginOTP extends AppCompatActivity {
         resend_opt_textView.setOnClickListener((v)->{
             sendOtp(phoneNumber,true);
         });
-
     }
+
 
     void sendOtp(String phoneNumber,boolean isResend){
         setInProgress(true);
@@ -91,12 +97,16 @@ public class LoginOTP extends AppCompatActivity {
                                 verificationCode = s;
                                 resendingToken = forceResendingToken;
                                 AndroidUtil.showToast(getApplicationContext(),"OTP sent successfully");
+                                Log.d("OTP_Verify", "OTP send to: " + phoneNumber);
+                                Log.d("OTP_Verify", "Verification code: " + verificationCode);
                                 setInProgress(false);
                             }
                         });
-        if(isResend){
-            PhoneAuthProvider.verifyPhoneNumber(builder.setForceResendingToken(resendingToken).build());
-        }else{
+        if (isResend && resendingToken != null) {
+            PhoneAuthProvider.verifyPhoneNumber(
+                    builder.setForceResendingToken(resendingToken).build()
+            );
+        } else {
             PhoneAuthProvider.verifyPhoneNumber(builder.build());
         }
 
@@ -120,7 +130,7 @@ public class LoginOTP extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 setInProgress(false);
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(LoginOTP.this,LoginUserName.class);
+                    Intent intent = new Intent(LoginOTPActivity.this, LoginUserNameActivity.class);
                     intent.putExtra("phone",phoneNumber);
                     startActivity(intent);
                 }else{
